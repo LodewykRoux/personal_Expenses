@@ -4,7 +4,7 @@ import 'package:personal_expenses/widgets/new_transaction.dart';
 import 'package:personal_expenses/widgets/transaction_list.dart';
 
 class UserTransactions extends StatefulWidget {
-  UserTransactions({Key? key}) : super(key: key);
+  const UserTransactions({Key? key}) : super(key: key);
 
   @override
   _UserTransactionsState createState() => _UserTransactionsState();
@@ -25,7 +25,18 @@ class _UserTransactionsState extends State<UserTransactions> {
       date: DateTime.now(),
     ),
   ];
-  
+
+  void _addNewTransaction(String title, double amount) {
+    final newTrans = Transaction(
+        id: DateTime.now().toString(),
+        title: title,
+        amount: amount,
+        date: DateTime.now());
+    setState(() {
+      _userTransactions.add(newTrans);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

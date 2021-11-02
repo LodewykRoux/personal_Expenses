@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:personal_expenses/widgets/user_transactions.dart';
 
 void main() => runApp(const MyApp());
 
@@ -34,7 +35,7 @@ class MyHomePage extends StatelessWidget {
               child: const Text('CHART!'),
             ),
           ),
-          
+          const UserTransactions(),
         ],
       ),
     );
