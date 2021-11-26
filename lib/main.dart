@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:personal_expenses/widgets/chart.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
 import 'package:personal_expenses/widgets/transaction_list.dart';
 
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't1',
       title: 'New Shoes',
       amount: 69.99,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(const Duration(days: 2)),
     ),
     Transaction(
       id: 't2',
@@ -55,7 +56,44 @@ class _MyHomePageState extends State<MyHomePage> {
       amount: 16.53,
       date: DateTime.now(),
     ),
+    Transaction(
+      id: 't3',
+      title: 'New a',
+      amount: 89.99,
+      date: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+    Transaction(
+      id: 't4',
+      title: 'New Shoes',
+      amount: 698.99,
+      date: DateTime.now().subtract(const Duration(days: 3)),
+    ),
+    Transaction(
+      id: 't5',
+      title: 'New Shoes',
+      amount: 800.99,
+      date: DateTime.now().subtract(const Duration(days: 4)),
+    ),
+    Transaction(
+      id: 't6',
+      title: 'New Shoes',
+      amount: 16.99,
+      date: DateTime.now().subtract(const Duration(days: 5)),
+    ),
+    Transaction(
+      id: 't7',
+      title: 'New Shoes',
+      amount: 29.99,
+      date: DateTime.now().subtract(const Duration(days: 6)),
+    ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((element) {
+      return element.date
+          .isAfter(DateTime.now().subtract(const Duration(days: 7)));
+    }).toList();
+  }
 
   void _addNewTransaction(String title, double amount) {
     final newTrans = Transaction(
@@ -97,12 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Card(
-              color: Colors.blue,
-              child: Container(
-                width: double.infinity,
-                child: const Text('CHART!'),
-              ),
+            Chart(
+              recentTransactions: _recentTransactions,
             ),
             TransactionList(
               transactions: _userTransactions,
