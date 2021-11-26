@@ -65,13 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
       id: 't4',
       title: 'New Shoes',
-      amount: 698.99,
+      amount: 68.99,
       date: DateTime.now().subtract(const Duration(days: 3)),
     ),
     Transaction(
       id: 't5',
       title: 'New Shoes',
-      amount: 800.99,
+      amount: 160.99,
       date: DateTime.now().subtract(const Duration(days: 4)),
     ),
     Transaction(
@@ -95,12 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime chosenDate) {
     final newTrans = Transaction(
-        id: DateTime.now().toString(),
-        title: title,
-        amount: amount,
-        date: DateTime.now());
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: chosenDate,
+    );
     setState(() {
       _userTransactions.add(newTrans);
     });

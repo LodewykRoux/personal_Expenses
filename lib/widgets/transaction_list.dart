@@ -63,6 +63,17 @@ class TransactionList extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              )),
+                        ),
                       )
                     ],
                   ),
